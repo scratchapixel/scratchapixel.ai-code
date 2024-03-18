@@ -1,3 +1,7 @@
+// (c) scratchapixel - 2024
+// Distributed under the terms of the CC BY-NC-ND 4.0 License.
+// https://creativecommons.org/licenses/by-nc-nd/4.0/
+
 #include <iostream>
 #include <cstdlib> // For std::rand() and std::srand()
 #include <ctime> // For std::time()
@@ -15,7 +19,7 @@ double df(double x) {
 int main() {
     std::srand(13); // Seed the random number generator
     double x = std::rand() % 100 / 10.0 - 5; // Start at a random point between -5 and 5
-    double learning_rate = 0.01; // Learning rate
+    double step_size = 0.01; // Learning rate
     double threshold = 0.001; // Threshold for cost function value to stop iterating
     int max_iterations = 1000; // Maximum number of iterations to prevent infinite loops
     int iteration = 0;
@@ -23,7 +27,7 @@ int main() {
     double cost = f(x); // Calculate initial cost
 
     while (cost > threshold && iteration < max_iterations) {
-        x -= learning_rate * df(x); // Adjust x based on the derivative of the cost function
+        x -= step_size * df(x); // Adjust x based on the derivative of the cost function
         cost = f(x); // Recalculate cost after updating x
         iteration++;
 
